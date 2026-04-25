@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모라중앙교회</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* =====================
+           상단 정보바
+        ===================== */
+        .topbar {
+            background: #1a3a6b;
+            color: #ccd9f0;
+            font-size: 0.78rem;
+            padding: 6px 0;
+        }
+        .topbar .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 24px;
+        }
+        .topbar span { display: flex; align-items: center; gap: 5px; }
+        .topbar-btn {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            color: #ccd9f0;
+            font-size: 0.78rem;
+            padding: 4px 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .topbar-btn:hover { background: rgba(255,255,255,0.22); }
+        .topbar-btn.join {
+            background: rgba(255,255,255,0.22);
+            color: white;
+        }
+
+        /* =====================
+           헤더 / 네비게이션
+        ===================== */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e8e8e8;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .logo-text .name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a3a6b;
+            letter-spacing: -0.5px;
+        }
+        .logo-text .sub {
+            font-size: 0.7rem;
+            color: #888;
+            letter-spacing: 1px;
+        }
+
+        /* 네비 */
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav > ul > li {
+            position: relative;
+        }
+        nav > ul > li > a {
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            height: 40px;
+            margin: 16px 4px;
+            border-radius: 20px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: #444;
+            background: #f0f3f8;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        nav > ul > li:hover > a {
+            background: #1a3a6b;
+            color: #fff;
+        }
+        nav > ul > li > a::after { display: none; }
+
+        /* 드롭다운 */
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 72px;
+            left: 0;
+            background: #fff;
+            border-top: 2px solid #1a3a6b;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            min-width: 160px;
+            z-index: 999;
+        }
+        nav > ul > li:hover .dropdown {
+            display: block;
+        }
+        .dropdown li a {
+            display: block;
+            padding: 11px 20px;
+            font-size: 0.88rem;
+            color: #444;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background 0.15s, color 0.15s;
+            white-space: nowrap;
+        }
+        .dropdown li:last-child a { border-bottom: none; }
+        .dropdown li a:hover {
+            background: #f4f7fb;
+            color: #1a3a6b;
+        }
+
+        /* 모바일 메뉴 버튼 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #333;
+            transition: all 0.3s;
+        }
+
+        /* =====================
+           히어로 슬라이더
+        ===================== */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 520px;
+        }
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.7s ease;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .slide:nth-child(1) {
+            background: linear-gradient(rgba(10,25,60,0.35), rgba(10,25,60,0.35)),
+                        url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1600&q=80') center/cover no-repeat;
+        }
+        .slide:nth-child(2) {
+            background: linear-gradient(rgba(10,25,50,0.60), rgba(10,25,50,0.60)),
+                        url('https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1600&q=80') center/cover no-repeat;
+        }
+        .slide:nth-child(3) {
+            background: linear-gradient(rgba(15,30,60,0.55), rgba(15,30,60,0.55)),
+                        url('https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1600&q=80') center/cover no-repeat;
+        }
+
+        .slide-cross {
+            position: absolute;
+            opacity: 0.06;
+            font-size: 18rem;
+            font-weight: 700;
+            pointer-events: none;
+            user-select: none;
+        }
+        .slide-content { position: relative; z-index: 1; padding: 0 20px; }
+        .slide-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #ddeeff;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .slide-content h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 14px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+        .slide-content p {
+            font-size: 1.1rem;
+            opacity: 0.88;
+            font-weight: 300;
+        }
+
+        /* 슬라이더 컨트롤 */
+        .slide-dots {
+            position: absolute;
+            bottom: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.45);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        .dot.active {
+            background: white;
+            width: 24px;
+            border-radius: 4px;
+        }
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+        .slide-btn:hover { background: rgba(255,255,255,0.3); }
+        .slide-prev { left: 20px; }
+        .slide-next { right: 20px; }
+
+        /* =====================
+           예배 안내 배너
+        ===================== */
+        .worship-banner {
+            background: #1a3a6b;
+            color: white;
+        }
+        .worship-banner .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .worship-item {
+            padding: 28px 24px;
+            border-right: 1px solid rgba(255,255,255,0.12);
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .worship-item:last-child { border-right: none; }
+        .worship-item:hover { background: rgba(255,255,255,0.07); }
+        .worship-day {
+            font-size: 0.78rem;
+            color: #8bb4e0;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .worship-name {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .worship-time {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #ddeeff;
+        }
+
+        /* =====================
+           본문 공통
+        ===================== */
+        .section {
+            padding: 70px 0;
+        }
+        .section.gray { background: #f7f9fc; }
+        .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-head {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+        .section-head .label {
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            color: #1a3a6b;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .section-head h2 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #1a2a40;
+            letter-spacing: -0.5px;
+        }
+        .section-head .bar {
+            width: 40px;
+            height: 3px;
+            background: #1a3a6b;
+            margin: 14px auto 0;
+            border-radius: 2px;
+        }
+
+        /* =====================
+           뉴스 + 영상 그리드
+        ===================== */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .news-block h3, .sermon-block h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a3a6b;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #1a3a6b;
+            margin-bottom: 0;
+        }
+        .news-list { list-style: none; }
+        .news-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.9rem;
+            gap: 10px;
+        }
+        .news-list li:last-child { border-bottom: none; }
+        .news-list .title {
+            color: #333;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .news-list .title:hover { color: #1a3a6b; }
+        .news-list .date { color: #aaa; font-size: 0.8rem; white-space: nowrap; }
+        .news-list .badge {
+            background: #1a3a6b;
+            color: white;
+            font-size: 0.68rem;
+            padding: 2px 7px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        /* 영상 */
+        .video-wrap {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 16px;
+            background: #000;
+            cursor: pointer;
+            display: block;
+        }
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-thumb-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.2s;
+        }
+        .video-wrap:hover .video-thumb-img { opacity: 0.85; }
+        .video-play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: white;
+        }
+        .video-play-btn {
+            width: 68px; height: 68px;
+            background: rgba(255,0,0,0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            transition: transform 0.2s, background 0.2s;
+            padding-left: 6px;
+        }
+        .video-wrap:hover .video-play-btn {
+            background: #ff0000;
+            transform: scale(1.1);
+        }
+        .video-play-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.4);
+            padding: 4px 14px;
+            border-radius: 12px;
+        }
+        .youtube-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #c00;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .youtube-link:hover { opacity: 0.75; }
+
+        /* =====================
+           빠른 메뉴
+        ===================== */
+        .quick-menu {
+            background: #1a3a6b;
+            padding: 40px 0;
+        }
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+        }
+        .quick-item {
+            background: rgba(255,255,255,0.05);
+            color: white;
+            text-align: center;
+            padding: 28px 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .quick-item:hover { background: rgba(255,255,255,0.12); }
+        .quick-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+        }
+        .quick-item:hover .quick-icon { opacity: 1; }
+        .quick-item p {
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        /* =====================
+           푸터
+        ===================== */
+        footer {
+            background: #0f2444;
+            color: #8899bb;
+            padding: 48px 0 28px;
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #1e3560;
+        }
+        .footer-logo .name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .footer-logo p {
+            font-size: 0.83rem;
+            line-height: 1.9;
+        }
+        .footer-col h4 {
+            color: #aabbd4;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li {
+            font-size: 0.83rem;
+            padding: 4px 0;
+        }
+        .footer-col ul li a:hover { color: #ddeeff; }
+        .footer-bottom {
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+        }
+
+        /* =====================
+           모바일 반응형
+        ===================== */
+        @media (max-width: 900px) {
+            nav { display: none; }
+            nav.open { display: block; position: absolute; top: 72px; left: 0; right: 0; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+            nav.open ul { flex-direction: column; }
+            nav.open > ul > li > a { height: auto; line-height: 1; padding: 14px 20px; border-bottom: 1px solid #f0f0f0; }
+            nav.open > ul > li > a::after { display: none; }
+            nav.open .dropdown { display: block; position: static; border: none; box-shadow: none; background: #f7f9fc; }
+            nav.open .dropdown li a { padding-left: 36px; }
+            .menu-toggle { display: flex; }
+            .worship-banner .inner { grid-template-columns: repeat(2, 1fr); }
+            .worship-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); }
+            .worship-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.12); }
+            .main-grid { grid-template-columns: 1fr; }
+            .quick-grid { grid-template-columns: repeat(3, 1fr); }
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .hero { height: 360px; }
+            .slide-content h2 { font-size: 1.8rem; }
+        }
+        @media (max-width: 480px) {
+            .worship-banner .inner { grid-template-columns: 1fr 1fr; }
+            .quick-grid { grid-template-columns: repeat(2, 1fr); }
+            .topbar .inner { flex-direction: column; align-items: flex-end; gap: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 상단 정보바 -->
+<div class="topbar">
+    <div class="inner">
+        <button class="topbar-btn">로그인</button>
+        <button class="topbar-btn join">회원가입</button>
+    </div>
+</div>
+
+<!-- 헤더 -->
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <div class="logo-icon"><img src="images/churchlogo.png" alt="모라중앙교회 로고"></div>
+            <div class="logo-text">
+                <div class="name">모라중앙교회</div>
+                <div class="sub">MORA CENTRAL CHURCH</div>
+            </div>
+        </a>
+
+        <nav id="mainNav">
+            <ul>
+                <li>
+                    <a href="#">교회 소개</a>
+                    <ul class="dropdown">
+                        <li><a href="pastor.html">담임목사 인사말</a></li>
+                        <li><a href="#">교회 연혁</a></li>
+                        <li><a href="#">섬기는 사람들</a></li>
+                        <li><a href="#">예배 안내</a></li>
+                        <li><a href="#">찾아오시는 길</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">설교</a>
+                    <ul class="dropdown">
+                        <li><a href="#">주일 오전 예배</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">양육교육</a>
+                    <ul class="dropdown">
+                        <li><a href="#">새가족부</a></li>
+                        <li><a href="#">양육과정</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">다음세대</a>
+                    <ul class="dropdown">
+                        <li><a href="#">유치부</a></li>
+                        <li><a href="#">유초등부</a></li>
+                        <li><a href="#">중고등부</a></li>
+                        <li><a href="#">청년부</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">교회 소식</a>
+                    <ul class="dropdown">
+                        <li><a href="#">새가족 소개</a></li>
+                        <li><a href="#">교회 소식</a></li>
+                        <li><a href="#">선교지 소식</a></li>
+                        <li><a href="#">포토앨범</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</header>
+
+<!-- 히어로 슬라이더 -->
+<section class="hero">
+    <div class="slides" id="slides">
+        <div class="slide">
+            <div class="slide-cross">✝</div>
+            <div class="slide-content">
+                <div class="slide-label">MORA CENTRAL CHURCH</div>
+                <h2>가르치고 전파하며<br>치유하는 교회</h2>
+                <p>모라중앙교회에 오신 것을 환영합니다</p>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-cross">✝</div>
+            <div class="slide-content">
+                <div class="slide-label">SUNDAY WORSHIP</div>
+                <h2>주일 예배에<br>초대합니다</h2>
+                <p>오전 11:00 · 오후 3:00</p>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-cross">✝</div>
+            <div class="slide-content">
+                <div class="slide-label">NEXT GENERATION</div>
+                <h2>다음 세대를<br>세워갑니다</h2>
+                <p>유치부 · 유초등부 · 중고등부 · 청년부</p>
+            </div>
+        </div>
+    </div>
+    <button class="slide-btn slide-prev" onclick="changeSlide(-1)">&#8249;</button>
+    <button class="slide-btn slide-next" onclick="changeSlide(1)">&#8250;</button>
+    <div class="slide-dots">
+        <button class="dot active" onclick="goSlide(0)"></button>
+        <button class="dot" onclick="goSlide(1)"></button>
+        <button class="dot" onclick="goSlide(2)"></button>
+    </div>
+</section>
+
+<!-- 예배 안내 배너 -->
+<div class="worship-banner">
+    <div class="inner">
+        <div class="worship-item">
+            <div class="worship-day">SUNDAY</div>
+            <div class="worship-name">주일 예배</div>
+            <div class="worship-time">오전 11:00</div>
+        </div>
+        <div class="worship-item">
+            <div class="worship-day">SUNDAY</div>
+            <div class="worship-name">주일 오후 예배</div>
+            <div class="worship-time">오후 3:00</div>
+        </div>
+        <div class="worship-item">
+            <div class="worship-day">WEDNESDAY</div>
+            <div class="worship-name">수요 예배</div>
+            <div class="worship-time">오후 7:30</div>
+        </div>
+        <div class="worship-item">
+            <div class="worship-day">FRIDAY</div>
+            <div class="worship-name">금요 철야</div>
+            <div class="worship-time">오후 9:00</div>
+        </div>
+    </div>
+</div>
+
+<!-- 메인 콘텐츠 -->
+<section class="section gray">
+    <div class="inner">
+        <div class="main-grid">
+
+            <!-- 교회 소식 -->
+            <div class="news-block">
+                <h3>교회 소식</h3>
+                <ul class="news-list">
+                    <li>
+                        <span class="badge">공지</span>
+                        <span class="title">2025년 부활절 연합 예배 안내</span>
+                        <span class="date">2025.04.01</span>
+                    </li>
+                    <li>
+                        <span class="badge">공지</span>
+                        <span class="title">4월 새가족 환영회 일정 안내</span>
+                        <span class="date">2025.03.28</span>
+                    </li>
+                    <li>
+                        <span class="title">3월 선교지 소식 — 동남아시아 현장 보고</span>
+                        <span class="date">2025.03.20</span>
+                    </li>
+                    <li>
+                        <span class="title">청년부 수련회 사진 공유</span>
+                        <span class="date">2025.03.15</span>
+                    </li>
+                    <li>
+                        <span class="title">봄 양육과정 등록 안내 (4월 개강)</span>
+                        <span class="date">2025.03.10</span>
+                    </li>
+                    <li>
+                        <span class="title">2025년 1분기 재정 보고</span>
+                        <span class="date">2025.03.02</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 최근 설교 -->
+            <div class="sermon-block">
+                <h3>최근 설교</h3>
+                <!-- ✅ 영상 교체 방법: 유튜브 영상 주소에서 v= 뒤의 ID를 복사해서 아래 VIDEO_ID 부분을 교체하세요 -->
+                <!-- 예) https://www.youtube.com/watch?v=abcd1234 → VIDEO_ID 자리에 abcd1234 입력 -->
+                <a class="video-wrap" href="https://www.youtube.com/watch?v=DIrvuiKWnn0" target="_blank" rel="noopener">
+                    <img class="video-thumb-img"
+                         src="https://img.youtube.com/vi/DIrvuiKWnn0/maxresdefault.jpg"
+                         alt="수고함으로 좋은 상을 얻을 것임이라">
+                    <div class="video-play-overlay">
+                        <div class="video-play-btn">▶</div>
+                        <span class="video-play-label">수고함으로 좋은 상을 얻을 것임이라</span>
+                    </div>
+                </a>
+                <a class="youtube-link" href="https://www.youtube.com/@MorajoongangChurch" target="_blank" rel="noopener">
+                    ▶ 유튜브 채널에서 더보기 (모라중앙교회)
+                </a>
+                <ul class="news-list" style="margin-top: 8px;">
+                    <li>
+                        <!-- ✅ 설교 제목과 유튜브 영상 링크를 입력하세요 -->
+                        <a class="title" href="https://www.youtube.com/watch?v=DIrvuiKWnn0" target="_blank">수고함으로 좋은 상을 얻을 것임이라</a>
+                        <span class="date">2025.03.30</span>
+                    </li>
+                    <li>
+                        <a class="title" href="https://www.youtube.com/@MorajoongangChurch" target="_blank">주일 설교 — 제목을 입력하세요</a>
+                        <span class="date">2025.03.23</span>
+                    </li>
+                    <li>
+                        <a class="title" href="https://www.youtube.com/@MorajoongangChurch" target="_blank">주일 설교 — 제목을 입력하세요</a>
+                        <span class="date">2025.03.16</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 빠른 메뉴 -->
+<div class="quick-menu">
+    <div class="inner">
+        <div class="quick-grid">
+            <div class="quick-item">
+                <div class="quick-icon"><i class="fa-solid fa-user-plus"></i></div>
+                <p>새가족 소개</p>
+            </div>
+            <div class="quick-item" onclick="window.open('https://www.youtube.com/@MorajoongangChurch','_blank')" style="cursor:pointer;">
+                <div class="quick-icon"><i class="fa-brands fa-youtube"></i></div>
+                <p>설교 영상</p>
+            </div>
+            <div class="quick-item">
+                <div class="quick-icon"><i class="fa-solid fa-church"></i></div>
+                <p>예배 안내</p>
+            </div>
+            <div class="quick-item">
+                <div class="quick-icon"><i class="fa-solid fa-images"></i></div>
+                <p>포토앨범</p>
+            </div>
+            <div class="quick-item">
+                <div class="quick-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <p>찾아오시는 길</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 푸터 -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-logo">
+                <div class="name"><img src="images/churchlogo.png" alt="로고" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1);"> 모라중앙교회</div>
+                <p>
+                    주소: 부산시 사상구 백양대로902번길26<br>
+                    전화: 051-312-4729<br>
+                    주일예배: 오전 11:00 / 오후 3:00<br>
+                    수요예배: 오후 7:30 &nbsp;|&nbsp; 금요철야: 오후 9:00
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>교회 소개</h4>
+                <ul>
+                    <li><a href="#">담임목사 인사말</a></li>
+                    <li><a href="#">교회 연혁</a></li>
+                    <li><a href="#">섬기는 사람들</a></li>
+                    <li><a href="#">예배 안내</a></li>
+                    <li><a href="#">찾아오시는 길</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>바로가기</h4>
+                <ul>
+                    <li><a href="#">주일 설교</a></li>
+                    <li><a href="#">새가족 소개</a></li>
+                    <li><a href="#">교회 소식</a></li>
+                    <li><a href="#">선교지 소식</a></li>
+                    <li><a href="#">포토앨범</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 모라중앙교회. All rights reserved.</span>
+            <span>Designed for Mora Central Church</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // 슬라이더
+    let current = 0;
+    const total = 3;
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+
+    function updateSlider() {
+        slides.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+    function changeSlide(dir) {
+        current = (current + dir + total) % total;
+        updateSlider();
+    }
+    function goSlide(idx) {
+        current = idx;
+        updateSlider();
+    }
+    // 자동 슬라이드 (5초)
+    setInterval(() => changeSlide(1), 5000);
+
+    // 모바일 메뉴
+    function toggleMenu() {
+        document.getElementById('mainNav').classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
