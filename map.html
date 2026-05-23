@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>찾아오시는 길 — 모라중앙교회</title>
+    <meta name="description" content="모라중앙교회 찾아오시는 길 | 부산시 사상구 백양대로902번길 26">
+    <meta property="og:title" content="찾아오시는 길 — 모라중앙교회">
+    <meta property="og:description" content="부산시 사상구 백양대로902번길 26">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1200&q=80">
+    <meta property="og:url" content="https://vibecoding-seven-phi.vercel.app/map.html">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* ── Page Hero ── */
+        .page-hero { background: var(--primary); color: white; padding: 56px 0 44px; text-align: center; }
+        .breadcrumb { font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 14px; }
+        .breadcrumb span { color: rgba(255,255,255,0.9); }
+        .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.5px; }
+        .page-hero-bar { width: 40px; height: 3px; background: rgba(255,255,255,0.5); margin: 16px auto 0; border-radius: 2px; }
+
+        /* ── Map iframe ── */
+        .map-wrap { position: relative; }
+        .map-wrap iframe {
+            width: 100%; height: 520px;
+            border: none; display: block;
+        }
+
+        /* ── Map buttons bar ── */
+        .map-btn-bar {
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 12px 0;
+        }
+        .map-btn-bar .inner {
+            display: flex; gap: 10px; justify-content: flex-end; align-items: center;
+        }
+        .btn-naver {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 9px 18px; background: #03C75A; color: white;
+            border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-naver:hover { background: #02a34a; }
+        .btn-direction {
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 9px 18px; background: var(--primary); color: white;
+            border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-direction:hover { background: #0f2a5a; }
+
+        /* ── Info Section ── */
+        .info-section { padding: 60px 0; background: var(--surface); }
+        .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .info-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: 8px; padding: 28px 24px;
+        }
+        .info-card-icon {
+            width: 44px; height: 44px; background: var(--primary);
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem; margin-bottom: 16px;
+        }
+        .info-card h3 { font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+        .info-card p { font-size: 0.88rem; color: #555; line-height: 2; }
+        .info-card a { color: var(--primary); font-weight: 500; }
+        .info-card a:hover { text-decoration: underline; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .info-grid { grid-template-columns: 1fr; }
+            .map-wrap iframe { height: 380px; }
+            .map-btn-bar .inner { justify-content: center; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body data-page="map">
+
+    <div id="site-header"></div>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="breadcrumb">교회 소개 &nbsp;›&nbsp; <span>찾아오시는 길</span></div>
+        <h1>찾아오시는 길</h1>
+        <div class="page-hero-bar"></div>
+    </div>
+
+    <!-- 네이버 지도 iframe -->
+    <div class="map-wrap">
+        <iframe
+            src="https://map.naver.com/p/entry/place/15001973"
+            title="모라중앙교회 위치"
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- 버튼 바 -->
+    <div class="map-btn-bar">
+        <div class="inner">
+            <a class="btn-naver"
+               href="https://map.naver.com/p/entry/place/15001973"
+               target="_blank" rel="noopener">
+                <i class="fa-solid fa-location-dot"></i> 네이버 지도에서 보기
+            </a>
+            <a class="btn-direction"
+               href="https://map.naver.com/p/directions/3AE7Jn,2zae3i,%EB%AA%A8%EB%9D%BC%EB%86%8D%ED%98%91,622836,BUS_STATION/3AEbii,2zabzA,%EB%AA%A8%EB%9D%BC%EC%A4%91%EC%95%99%EA%B5%90%ED%9A%8C,15001973,PLACE_POI/-/walk?c=18.00,0,0,0,dh"
+               target="_blank" rel="noopener">
+                <i class="fa-solid fa-person-walking"></i> 모라농협에서 길찾기
+            </a>
+        </div>
+    </div>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <div class="inner">
+            <div class="info-grid">
+
+                <div class="info-card">
+                    <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>주소 및 연락처</h3>
+                    <p>
+                        부산시 사상구<br>
+                        백양대로902번길 26<br><br>
+                        <i class="fa-solid fa-phone" style="color:var(--primary);margin-right:6px;"></i>
+                        <a href="tel:051-312-4729">051-312-4729</a>
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon"><i class="fa-solid fa-bus"></i></div>
+                    <h3>대중교통</h3>
+                    <p>
+                        <strong>도시철도</strong><br>
+                        2호선 사상역 하차 후 버스 환승<br><br>
+                        <strong>버스</strong><br>
+                        모라농협 정류장 하차
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-card-icon"><i class="fa-solid fa-car"></i></div>
+                    <h3>자가용</h3>
+                    <p>
+                        네비게이션에<br>
+                        <strong>「모라중앙교회」</strong> 또는<br>
+                        <strong>「사상구 백양대로902번길 26」</strong><br>
+                        으로 검색하세요.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="/js/components.js"></script>
+</body>
+</html>
