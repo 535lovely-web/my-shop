@@ -4,259 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>담임목사 인사말 — 모라중앙교회</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f5f5f7;
+            --fg: #1d1d1f;
+            --fg-2: #424245;
+            --muted: #6e6e73;
+            --meta: #86868b;
+            --border: #d2d2d7;
+            --border-soft: #e8e8ed;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --accent-on: #ffffff;
+            --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-pill: 980px;
+            --elev-raised: 0 12px 32px rgba(0,0,0,0.08);
+            --ease: cubic-bezier(0.28, 0, 0.22, 1);
+            --dur: 220ms;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', sans-serif; color: #333; line-height: 1.6; }
+        body { font-family: var(--font); color: var(--fg); line-height: 1.47; background: var(--bg); -webkit-font-smoothing: antialiased; }
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== 상단 정보바 ===================== */
-        .topbar {
-            background: #1a3a6b; color: #ccd9f0; font-size: 0.78rem; padding: 6px 0;
-        }
-        .topbar .inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 20px;
-            display: flex; justify-content: flex-end; gap: 24px;
-        }
-        .topbar-btn {
-            background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
-            color: #ccd9f0; font-size: 0.78rem; padding: 4px 14px; border-radius: 12px;
-            cursor: pointer; transition: background 0.2s; font-family: 'Noto Sans KR', sans-serif;
-        }
-        .topbar-btn:hover { background: rgba(255,255,255,0.22); }
-        .topbar-btn.join { background: rgba(255,255,255,0.22); color: white; }
-
-        /* ===================== 헤더 ===================== */
+        /* ── Header ── */
         header {
-            background: #fff; border-bottom: 1px solid #e8e8e8;
             position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-soft);
         }
         .header-inner {
-            max-width: 1200px; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; height: 72px;
+            max-width: 1024px; margin: 0 auto; padding: 0 22px;
+            display: flex; align-items: center; justify-content: space-between; height: 52px;
         }
-        .logo { display: flex; align-items: center; gap: 12px; }
-        .logo-icon {
-            width: 44px; height: 44px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
-        .logo-text .name { font-size: 1.25rem; font-weight: 700; color: #1a3a6b; letter-spacing: -0.5px; }
-        .logo-text .sub { font-size: 0.7rem; color: #888; letter-spacing: 1px; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-icon img { width: 32px; height: 32px; object-fit: contain; }
+        .logo-name { font-size: 15px; font-weight: 600; color: var(--fg); letter-spacing: -0.3px; }
 
-        nav ul { list-style: none; display: flex; }
+        nav ul { list-style: none; display: flex; gap: 2px; }
         nav > ul > li { position: relative; }
         nav > ul > li > a {
-            display: flex; align-items: center; padding: 0 18px;
-            height: 40px; margin: 16px 4px; border-radius: 20px;
-            font-size: 0.92rem; font-weight: 500; color: #444;
-            background: #f0f3f8; transition: background 0.2s, color 0.2s; white-space: nowrap;
+            display: flex; align-items: center; padding: 6px 13px;
+            font-size: 14px; font-weight: 400; color: var(--fg);
+            border-radius: var(--radius-sm);
+            transition: color var(--dur) var(--ease), background var(--dur) var(--ease); white-space: nowrap;
         }
-        nav > ul > li:hover > a, nav > ul > li.active > a { background: #1a3a6b; color: #fff; }
+        nav > ul > li:hover > a,
+        nav > ul > li.active > a { color: var(--accent); background: rgba(0,113,227,0.06); }
+
         .dropdown {
-            display: none; position: absolute; top: 72px; left: 0; background: #fff;
-            border-top: 2px solid #1a3a6b; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-            min-width: 160px; z-index: 999;
+            display: none; position: absolute; top: calc(100% + 8px);
+            left: 50%; transform: translateX(-50%);
+            background: rgba(255,255,255,0.96); backdrop-filter: blur(20px);
+            border: 1px solid var(--border); border-radius: var(--radius-md);
+            box-shadow: var(--elev-raised); min-width: 152px; padding: 6px; z-index: 999;
         }
         nav > ul > li:hover .dropdown { display: block; }
         .dropdown li a {
-            display: block; padding: 11px 20px; font-size: 0.88rem; color: #444;
-            border-bottom: 1px solid #f0f0f0; transition: background 0.15s, color 0.15s; white-space: nowrap;
+            display: block; padding: 9px 14px; font-size: 13px; color: var(--fg);
+            border-radius: var(--radius-sm);
+            transition: background var(--dur) var(--ease), color var(--dur) var(--ease); white-space: nowrap;
         }
-        .dropdown li:last-child a { border-bottom: none; }
-        .dropdown li a:hover, .dropdown li a.active { background: #f4f7fb; color: #1a3a6b; font-weight: 500; }
+        .dropdown li a:hover,
+        .dropdown li a.active { background: var(--surface); color: var(--accent); }
 
         .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
-        .menu-toggle span { display: block; width: 24px; height: 2px; background: #333; transition: all 0.3s; }
+        .menu-toggle span { display: block; width: 22px; height: 1.5px; background: var(--fg); border-radius: 2px; }
 
-        /* ===================== 페이지 히어로 ===================== */
+        /* ── Page Hero ── */
         .page-hero {
-            background: linear-gradient(rgba(10,25,60,0.72), rgba(10,25,60,0.72)),
-                        url('https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1600&q=80') center/cover no-repeat;
-            color: white; padding: 60px 0 52px;
-            text-align: center;
+            background: #000; color: white;
+            padding: 72px 0 60px; text-align: center;
         }
-        .page-hero .breadcrumb {
-            font-size: 0.8rem; color: #8bafd8; letter-spacing: 1px; margin-bottom: 14px;
+        .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-bottom: 16px; }
+        .breadcrumb span { color: rgba(255,255,255,0.7); }
+        .page-hero h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600;
+            letter-spacing: -0.015em; line-height: 1.08;
         }
-        .page-hero .breadcrumb span { color: #cce0ff; }
-        .page-hero h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
-        .page-hero .bar {
-            width: 40px; height: 3px; background: #5a9cdd;
-            margin: 16px auto 0; border-radius: 2px;
-        }
+        .page-hero-bar { width: 36px; height: 2px; background: var(--accent); margin: 18px auto 0; border-radius: 2px; }
 
-        /* ===================== 본문 ===================== */
-        .section { padding: 80px 0; }
-        .section.gray { background: #f7f9fc; }
-        .inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* ── Section ── */
+        .section { padding: 100px 0; }
+        .inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
 
-        /* 담임목사 레이아웃 */
+        /* ── Pastor Layout ── */
         .pastor-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 60px;
-            align-items: start;
+            display: grid; grid-template-columns: 300px 1fr; gap: 72px; align-items: start;
         }
-
-        /* 사진 영역 */
-        .pastor-photo-wrap {
-            position: sticky;
-            top: 100px;
-        }
+        .pastor-photo-wrap { position: sticky; top: 80px; }
         .pastor-photo {
-            width: 100%;
-            border-radius: 12px;
-            overflow: hidden;
+            width: 100%; border-radius: var(--radius-lg); overflow: hidden;
+            background: var(--surface);
         }
-        .pastor-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* 사진이 준비되면 이 부분을 교체하세요 */
-        /* .pastor-photo img { width: 100%; height: 100%; object-fit: cover; } */
+        .pastor-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         .pastor-name-card {
-            margin-top: 20px;
-            background: #1a3a6b;
-            color: white;
-            border-radius: 10px;
-            padding: 20px 24px;
-            text-align: center;
+            margin-top: 16px; background: var(--fg); color: white;
+            border-radius: var(--radius-md); padding: 20px 24px; text-align: center;
         }
         .pastor-name-card .title-label {
-            font-size: 0.75rem;
-            color: #8bb4e0;
-            letter-spacing: 2px;
-            margin-bottom: 6px;
+            font-size: 11px; font-weight: 500; letter-spacing: 2px;
+            color: rgba(255,255,255,0.4); margin-bottom: 6px; text-transform: uppercase;
         }
-        .pastor-name-card .pastor-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-        .pastor-name-card .pastor-church {
-            font-size: 0.85rem;
-            color: #cce0ff;
-        }
+        .pastor-name-card .pastor-name { font-size: 1.3rem; font-weight: 600; margin-bottom: 2px; letter-spacing: -0.3px; }
+        .pastor-name-card .pastor-church { font-size: 13px; color: rgba(255,255,255,0.5); }
 
-        /* 인사말 영역 */
-        .pastor-greeting {}
-        .greeting-label {
-            font-size: 0.78rem;
-            letter-spacing: 2px;
-            color: #1a3a6b;
-            font-weight: 500;
-            margin-bottom: 8px;
+        /* ── Greeting ── */
+        .greeting-eyebrow {
+            font-size: 12px; font-weight: 500; letter-spacing: 3px;
+            color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
         }
         .greeting-title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            color: #1a2a40;
-            letter-spacing: -0.5px;
-            line-height: 1.35;
-            margin-bottom: 6px;
+            font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 600;
+            color: var(--fg); letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 28px;
         }
-        .greeting-subtitle {
-            font-size: 1.05rem;
-            color: #4a6a9a;
-            font-weight: 400;
-            margin-bottom: 32px;
-        }
-        .greeting-divider {
-            width: 40px; height: 3px;
-            background: #1a3a6b;
-            border-radius: 2px;
-            margin-bottom: 32px;
-        }
-        .greeting-body {
-            font-size: 1rem;
-            line-height: 2;
-            color: #444;
-        }
+        .greeting-divider { width: 36px; height: 2px; background: var(--accent); border-radius: 2px; margin-bottom: 32px; }
+        .greeting-body { font-size: 17px; line-height: 2; color: var(--fg-2); }
         .greeting-body p { margin-bottom: 1.6em; }
         .greeting-body p:last-child { margin-bottom: 0; }
 
-        .greeting-signature {
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid #e0e6ef;
-            text-align: right;
-        }
-        .greeting-signature .sig-church {
-            font-size: 0.85rem;
-            color: #888;
-            margin-bottom: 6px;
-        }
-        .greeting-signature .sig-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1a2a40;
-        }
-        .greeting-signature .sig-title {
-            font-size: 0.85rem;
-            color: #5a7aaa;
-            margin-top: 2px;
-        }
-
-        /* ===================== 푸터 ===================== */
-        footer { background: #0f2444; color: #8899bb; padding: 48px 0 28px; }
-        .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        /* ── Footer ── */
+        footer { background: #000; color: var(--muted); padding: 56px 0 32px; }
+        .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
         .footer-top {
-            display: grid; grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 40px; padding-bottom: 32px; border-bottom: 1px solid #1e3560;
+            display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px;
+            padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08);
         }
-        .footer-logo .name { font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 10px; }
-        .footer-logo p { font-size: 0.83rem; line-height: 1.9; }
-        .footer-col h4 { color: #aabbd4; font-size: 0.82rem; letter-spacing: 1px; margin-bottom: 14px; font-weight: 500; }
+        .footer-logo .name {
+            font-size: 15px; font-weight: 600; color: white; margin-bottom: 14px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .footer-logo .name img { width: 20px; height: 20px; object-fit: contain; filter: brightness(0) invert(1); }
+        .footer-logo p { font-size: 13px; line-height: 2; }
+        .footer-col h4 {
+            font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+            color: rgba(255,255,255,0.35); margin-bottom: 16px;
+        }
         .footer-col ul { list-style: none; }
-        .footer-col ul li { font-size: 0.83rem; padding: 4px 0; }
-        .footer-col ul li a:hover { color: #ddeeff; }
+        .footer-col ul li { font-size: 13px; padding: 4px 0; }
+        .footer-col ul li a { color: var(--muted); transition: color var(--dur) var(--ease); }
+        .footer-col ul li a:hover { color: white; }
         .footer-bottom {
-            padding-top: 20px; display: flex; justify-content: space-between;
-            align-items: center; font-size: 0.78rem;
+            padding-top: 24px; display: flex; justify-content: space-between;
+            align-items: center; font-size: 12px; color: rgba(255,255,255,0.22);
         }
 
-        /* ===================== 모바일 ===================== */
+        /* ── Responsive ── */
         @media (max-width: 900px) {
             nav { display: none; }
-            nav.open { display: block; position: absolute; top: 72px; left: 0; right: 0; background: white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-            nav.open ul { flex-direction: column; }
-            nav.open > ul > li > a { height: auto; line-height: 1; padding: 14px 20px; border-bottom: 1px solid #f0f0f0; }
-            nav.open .dropdown { display: block; position: static; border: none; box-shadow: none; background: #f7f9fc; }
-            nav.open .dropdown li a { padding-left: 36px; }
+            nav.open {
+                display: block; position: absolute; top: 52px; left: 0; right: 0;
+                background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+                border-bottom: 1px solid var(--border);
+            }
+            nav.open ul { flex-direction: column; padding: 8px; }
+            nav.open > ul > li > a { padding: 12px 16px; }
+            nav.open .dropdown { display: block; position: static; border: none; box-shadow: none; background: transparent; padding-left: 16px; transform: none; left: 0; }
             .menu-toggle { display: flex; }
             .pastor-layout { grid-template-columns: 1fr; gap: 40px; }
-            .pastor-photo-wrap { position: static; max-width: 280px; margin: 0 auto; }
-            .footer-top { grid-template-columns: 1fr; }
+            .pastor-photo-wrap { position: static; max-width: 260px; margin: 0 auto; }
+            .footer-top { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- 상단 정보바 -->
-<div class="topbar">
-    <div class="inner">
-        <button class="topbar-btn">로그인</button>
-        <button class="topbar-btn join">회원가입</button>
-    </div>
-</div>
-
-<!-- 헤더 -->
+<!-- Header -->
 <header>
     <div class="header-inner">
         <a href="index.html" class="logo">
             <div class="logo-icon"><img src="images/churchlogo.png" alt="모라중앙교회 로고"></div>
-            <div class="logo-text">
-                <div class="name">모라중앙교회</div>
-                <div class="sub">MORA CENTRAL CHURCH</div>
-            </div>
+            <span class="logo-name">모라중앙교회</span>
         </a>
 
         <nav id="mainNav">
@@ -312,14 +239,14 @@
     </div>
 </header>
 
-<!-- 페이지 히어로 -->
+<!-- Page Hero -->
 <div class="page-hero">
     <div class="breadcrumb">교회 소개 &nbsp;›&nbsp; <span>담임목사 인사말</span></div>
     <h1>담임목사 인사말</h1>
-    <div class="bar"></div>
+    <div class="page-hero-bar"></div>
 </div>
 
-<!-- 본문 -->
+<!-- Content -->
 <section class="section">
     <div class="inner">
         <div class="pastor-layout">
@@ -330,8 +257,7 @@
                     <img src="images/pastorphoto.png" alt="담임목사 이성희">
                 </div>
                 <div class="pastor-name-card">
-                    <div class="title-label">LEAD PASTOR</div>
-                    <!-- ✅ 담임목사 이름을 입력하세요 -->
+                    <div class="title-label">Lead Pastor</div>
                     <div class="pastor-name">이성희 목사</div>
                     <div class="pastor-church">모라중앙교회</div>
                 </div>
@@ -339,11 +265,9 @@
 
             <!-- 오른쪽: 인사말 -->
             <div class="pastor-greeting">
-                <div class="greeting-label">PASTOR'S GREETING</div>
-                <!-- ✅ 인사말 제목을 수정하세요 -->
+                <div class="greeting-eyebrow">Pastor's Greeting</div>
                 <div class="greeting-title">사랑하는 성도 여러분,<br>모라중앙교회에 오신 것을<br>환영합니다.</div>
                 <div class="greeting-divider"></div>
-
                 <div class="greeting-body">
                     <p>사랑하는 성도님들과 이곳을 찾아주신 모든 분들에게 주님의 이름으로 평안을 전합니다.</p>
                     <p>우리 교회는 "가르치고, 전파하며, 치유하는 교회"라는 사명을 품고 있습니다.<br>
@@ -359,19 +283,21 @@
                     <p>감사합니다.</p>
                     <p>담임목사 이성희</p>
                 </div>
-
             </div>
 
         </div>
     </div>
 </section>
 
-<!-- 푸터 -->
+<!-- Footer -->
 <footer>
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-logo">
-                <div class="name"><img src="images/churchlogo.png" alt="로고" style="width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:6px;filter:brightness(0) invert(1);"> 모라중앙교회</div>
+                <div class="name">
+                    <img src="images/churchlogo.png" alt="로고">
+                    모라중앙교회
+                </div>
                 <p>
                     주소: 부산시 사상구 백양대로902번길26<br>
                     전화: 051-312-4729<br>
@@ -403,16 +329,13 @@
         </div>
         <div class="footer-bottom">
             <span>© 2025 모라중앙교회. All rights reserved.</span>
-            <span>Designed for Mora Central Church</span>
+            <span>Mora Central Church</span>
         </div>
     </div>
 </footer>
 
 <script>
-    function toggleMenu() {
-        document.getElementById('mainNav').classList.toggle('open');
-    }
+    function toggleMenu() { document.getElementById('mainNav').classList.toggle('open'); }
 </script>
-
 </body>
 </html>
