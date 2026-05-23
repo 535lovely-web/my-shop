@@ -4,338 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>담임목사 인사말 — 모라중앙교회</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="이성희 담임목사 인사말 | 가르치고, 전파하며, 치유하는 교회">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="모라중앙교회">
+    <meta property="og:title" content="담임목사 인사말 — 모라중앙교회">
+    <meta property="og:description" content="이성희 담임목사 인사말 | 가르치고, 전파하며, 치유하는 교회">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1200&q=80">
+    <meta property="og:url" content="https://vibecoding-seven-phi.vercel.app/pastor.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="담임목사 인사말 — 모라중앙교회">
+    <meta name="twitter:description" content="이성희 담임목사 인사말 | 가르치고, 전파하며, 치유하는 교회">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1200&q=80">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
     <style>
-        :root {
-            --bg: #ffffff;
-            --surface: #f5f5f7;
-            --fg: #1d1d1f;
-            --fg-2: #424245;
-            --muted: #6e6e73;
-            --meta: #86868b;
-            --border: #d2d2d7;
-            --border-soft: #e8e8ed;
-            --accent: #0071e3;
-            --accent-hover: #0077ed;
-            --accent-on: #ffffff;
-            --font: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 18px;
-            --radius-pill: 980px;
-            --elev-raised: 0 12px 32px rgba(0,0,0,0.08);
-            --ease: cubic-bezier(0.28, 0, 0.22, 1);
-            --dur: 220ms;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: var(--font); color: var(--fg); line-height: 1.47; background: var(--bg); -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none; color: inherit; }
-
-        /* ── Header ── */
-        header {
-            position: sticky; top: 0; z-index: 1000;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-soft);
-        }
-        .header-inner {
-            max-width: 1024px; margin: 0 auto; padding: 0 22px;
-            display: flex; align-items: center; justify-content: space-between; height: 52px;
-        }
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo-icon img { width: 32px; height: 32px; object-fit: contain; }
-        .logo-name { font-size: 15px; font-weight: 600; color: var(--fg); letter-spacing: -0.3px; }
-
-        nav ul { list-style: none; display: flex; gap: 2px; }
-        nav > ul > li { position: relative; }
-        nav > ul > li > a {
-            display: flex; align-items: center; padding: 6px 13px;
-            font-size: 14px; font-weight: 400; color: var(--fg);
-            border-radius: var(--radius-sm);
-            transition: color var(--dur) var(--ease), background var(--dur) var(--ease); white-space: nowrap;
-        }
-        nav > ul > li:hover > a,
-        nav > ul > li.active > a { color: var(--accent); background: rgba(0,113,227,0.06); }
-
-        .dropdown {
-            display: none; position: absolute; top: calc(100% + 8px);
-            left: 50%; transform: translateX(-50%);
-            background: rgba(255,255,255,0.96); backdrop-filter: blur(20px);
-            border: 1px solid var(--border); border-radius: var(--radius-md);
-            box-shadow: var(--elev-raised); min-width: 152px; padding: 6px; z-index: 999;
-        }
-        nav > ul > li:hover .dropdown { display: block; }
-        .dropdown li a {
-            display: block; padding: 9px 14px; font-size: 13px; color: var(--fg);
-            border-radius: var(--radius-sm);
-            transition: background var(--dur) var(--ease), color var(--dur) var(--ease); white-space: nowrap;
-        }
-        .dropdown li a:hover,
-        .dropdown li a.active { background: var(--surface); color: var(--accent); }
-
-        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
-        .menu-toggle span { display: block; width: 22px; height: 1.5px; background: var(--fg); border-radius: 2px; }
-
         /* ── Page Hero ── */
-        .page-hero {
-            background: #000; color: white;
-            padding: 72px 0 60px; text-align: center;
-        }
-        .breadcrumb { font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 1px; margin-bottom: 16px; }
-        .breadcrumb span { color: rgba(255,255,255,0.7); }
-        .page-hero h1 {
-            font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 600;
-            letter-spacing: -0.015em; line-height: 1.08;
-        }
-        .page-hero-bar { width: 36px; height: 2px; background: var(--accent); margin: 18px auto 0; border-radius: 2px; }
-
-        /* ── Section ── */
-        .section { padding: 100px 0; }
-        .inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
+        .page-hero { background: var(--primary); color: white; padding: 56px 0 44px; text-align: center; }
+        .breadcrumb { font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 14px; }
+        .breadcrumb span { color: rgba(255,255,255,0.9); }
+        .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.5px; }
+        .page-hero-bar { width: 40px; height: 3px; background: rgba(255,255,255,0.5); margin: 16px auto 0; border-radius: 2px; }
 
         /* ── Pastor Layout ── */
-        .pastor-layout {
-            display: grid; grid-template-columns: 300px 1fr; gap: 72px; align-items: start;
-        }
-        .pastor-photo-wrap { position: sticky; top: 80px; }
-        .pastor-photo {
-            width: 100%; border-radius: var(--radius-lg); overflow: hidden;
-            background: var(--surface);
-        }
+        .pastor-layout { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: start; }
+        .pastor-photo-wrap { position: sticky; top: 90px; }
+        .pastor-photo { width: 100%; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .pastor-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        .pastor-name-card {
-            margin-top: 16px; background: var(--fg); color: white;
-            border-radius: var(--radius-md); padding: 20px 24px; text-align: center;
-        }
-        .pastor-name-card .title-label {
-            font-size: 11px; font-weight: 500; letter-spacing: 2px;
-            color: rgba(255,255,255,0.4); margin-bottom: 6px; text-transform: uppercase;
-        }
-        .pastor-name-card .pastor-name { font-size: 1.3rem; font-weight: 600; margin-bottom: 2px; letter-spacing: -0.3px; }
-        .pastor-name-card .pastor-church { font-size: 13px; color: rgba(255,255,255,0.5); }
+        .pastor-name-card { margin-top: 12px; background: var(--primary); color: white; border-radius: var(--radius-md); padding: 20px 24px; text-align: center; }
+        .pastor-name-card .title-label { font-size: 0.7rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+        .pastor-name-card .pastor-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 2px; }
+        .pastor-name-card .pastor-church { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
 
         /* ── Greeting ── */
-        .greeting-eyebrow {
-            font-size: 12px; font-weight: 500; letter-spacing: 3px;
-            color: var(--accent); text-transform: uppercase; margin-bottom: 12px;
-        }
-        .greeting-title {
-            font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 600;
-            color: var(--fg); letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 28px;
-        }
-        .greeting-divider { width: 36px; height: 2px; background: var(--accent); border-radius: 2px; margin-bottom: 32px; }
-        .greeting-body { font-size: 17px; line-height: 2; color: var(--fg-2); }
-        .greeting-body p { margin-bottom: 1.6em; }
+        .greeting-eyebrow { font-size: 0.78rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 12px; }
+        .greeting-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #1a2a40; letter-spacing: -0.5px; line-height: 1.3; margin-bottom: 24px; }
+        .greeting-divider { width: 40px; height: 3px; background: var(--primary); border-radius: 2px; margin-bottom: 32px; }
+        .greeting-body { font-size: 1rem; line-height: 2; color: #555; }
+        .greeting-body p { margin-bottom: 1.4em; }
         .greeting-body p:last-child { margin-bottom: 0; }
-
-        /* ── Footer ── */
-        footer { background: #000; color: var(--muted); padding: 56px 0 32px; }
-        .footer-inner { max-width: 1024px; margin: 0 auto; padding: 0 22px; }
-        .footer-top {
-            display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px;
-            padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .footer-logo .name {
-            font-size: 15px; font-weight: 600; color: white; margin-bottom: 14px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .footer-logo .name img { width: 20px; height: 20px; object-fit: contain; filter: brightness(0) invert(1); }
-        .footer-logo p { font-size: 13px; line-height: 2; }
-        .footer-col h4 {
-            font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-            color: rgba(255,255,255,0.35); margin-bottom: 16px;
-        }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { font-size: 13px; padding: 4px 0; }
-        .footer-col ul li a { color: var(--muted); transition: color var(--dur) var(--ease); }
-        .footer-col ul li a:hover { color: white; }
-        .footer-bottom {
-            padding-top: 24px; display: flex; justify-content: space-between;
-            align-items: center; font-size: 12px; color: rgba(255,255,255,0.22);
-        }
 
         /* ── Responsive ── */
         @media (max-width: 900px) {
-            nav { display: none; }
-            nav.open {
-                display: block; position: absolute; top: 52px; left: 0; right: 0;
-                background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
-                border-bottom: 1px solid var(--border);
-            }
-            nav.open ul { flex-direction: column; padding: 8px; }
-            nav.open > ul > li > a { padding: 12px 16px; }
-            nav.open .dropdown { display: block; position: static; border: none; box-shadow: none; background: transparent; padding-left: 16px; transform: none; left: 0; }
-            .menu-toggle { display: flex; }
-            .pastor-layout { grid-template-columns: 1fr; gap: 40px; }
-            .pastor-photo-wrap { position: static; max-width: 260px; margin: 0 auto; }
-            .footer-top { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .pastor-layout { grid-template-columns: 1fr; gap: 36px; }
+            .pastor-photo-wrap { position: static; max-width: 240px; margin: 0 auto; }
         }
     </style>
 </head>
-<body>
+<body data-page="pastor">
 
-<!-- Header -->
-<header>
-    <div class="header-inner">
-        <a href="index.html" class="logo">
-            <div class="logo-icon"><img src="images/churchlogo.png" alt="모라중앙교회 로고"></div>
-            <span class="logo-name">모라중앙교회</span>
-        </a>
+    <div id="site-header"></div>
 
-        <nav id="mainNav">
-            <ul>
-                <li class="active">
-                    <a href="#">교회 소개</a>
-                    <ul class="dropdown">
-                        <li><a href="pastor.html" class="active">담임목사 인사말</a></li>
-                        <li><a href="#">교회 연혁</a></li>
-                        <li><a href="#">섬기는 사람들</a></li>
-                        <li><a href="#">예배 안내</a></li>
-                        <li><a href="#">찾아오시는 길</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">설교</a>
-                    <ul class="dropdown">
-                        <li><a href="#">주일 오전 예배</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">양육교육</a>
-                    <ul class="dropdown">
-                        <li><a href="#">새가족부</a></li>
-                        <li><a href="#">양육과정</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">다음세대</a>
-                    <ul class="dropdown">
-                        <li><a href="#">유치부</a></li>
-                        <li><a href="#">유초등부</a></li>
-                        <li><a href="#">중고등부</a></li>
-                        <li><a href="#">청년부</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">교회 소식</a>
-                    <ul class="dropdown">
-                        <li><a href="#">광고</a></li>
-                        <li><a href="#">새가족 소개</a></li>
-                        <li><a href="#">교우 소식</a></li>
-                        <li><a href="#">선교지 소식</a></li>
-                        <li><a href="#">포토앨범</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="breadcrumb">교회 소개 &nbsp;›&nbsp; <span>담임목사 인사말</span></div>
+        <h1>담임목사 인사말</h1>
+        <div class="page-hero-bar"></div>
     </div>
-</header>
 
-<!-- Page Hero -->
-<div class="page-hero">
-    <div class="breadcrumb">교회 소개 &nbsp;›&nbsp; <span>담임목사 인사말</span></div>
-    <h1>담임목사 인사말</h1>
-    <div class="page-hero-bar"></div>
-</div>
-
-<!-- Content -->
-<section class="section">
-    <div class="inner">
-        <div class="pastor-layout">
-
-            <!-- 왼쪽: 사진 -->
-            <div class="pastor-photo-wrap">
-                <div class="pastor-photo">
-                    <img src="images/pastorphoto.png" alt="담임목사 이성희">
+    <!-- Content -->
+    <section class="section">
+        <div class="inner">
+            <div class="pastor-layout">
+                <div class="pastor-photo-wrap">
+                    <div class="pastor-photo">
+                        <img src="/images/pastorphoto.png" alt="담임목사 이성희">
+                    </div>
+                    <div class="pastor-name-card">
+                        <div class="title-label">Lead Pastor</div>
+                        <div class="pastor-name">이성희 목사</div>
+                        <div class="pastor-church">모라중앙교회</div>
+                    </div>
                 </div>
-                <div class="pastor-name-card">
-                    <div class="title-label">Lead Pastor</div>
-                    <div class="pastor-name">이성희 목사</div>
-                    <div class="pastor-church">모라중앙교회</div>
+                <div class="pastor-greeting">
+                    <div class="greeting-eyebrow">Pastor's Greeting</div>
+                    <div class="greeting-title">사랑하는 성도 여러분,<br>모라중앙교회에 오신 것을<br>환영합니다.</div>
+                    <div class="greeting-divider"></div>
+                    <div class="greeting-body">
+                        <p>사랑하는 성도님들과 이곳을 찾아주신 모든 분들에게 주님의 이름으로 평안을 전합니다.</p>
+                        <p>우리 교회는 "가르치고, 전파하며, 치유하는 교회"라는 사명을 품고 있습니다.<br>
+                            말씀을 통해 삶의 방향을 배우고, 복음을 세상 가운데 담대히 전하며,<br>
+                            상한 마음과 아픈 삶이 회복되는 은혜의 공동체가 바로 우리 교회이기를 소망합니다.</p>
+                        <p>오늘을 살아가는 우리의 삶 속에는 예기치 않는 아픔, 그리고 설명하기 어려운 무거움이 찾아옵니다.<br>
+                            하나님께서는 그런 우리를 말씀으로 가르치시고, 사랑으로 품으시며, 치유의 손길로 새롭게 하시는 분이십니다.<br>
+                            우리 교회가 그 하나님의 사랑과 은혜를 경험하는 통로가 되기를 기도합니다.</p>
+                        <p>이곳에 오신 모든 분들이 말씀 안에서 참된 진리를 깨닫고, 복음 안에서 기쁨을 누리며,<br>
+                            주님의 치유하심으로 온전한 회복을 경험하시기를 축복합니다.<br>
+                            또한 서로를 사랑으로 섬기며 함께 성장해 가는 아름다운 공동체가 되기를 원합니다.</p>
+                        <p>언제나 주님의 평안과 은혜가 여러분의 삶 가운데 함께하기를 기도합니다.</p>
+                        <p>감사합니다.</p>
+                        <p>담임목사 이성희</p>
+                    </div>
                 </div>
-            </div>
-
-            <!-- 오른쪽: 인사말 -->
-            <div class="pastor-greeting">
-                <div class="greeting-eyebrow">Pastor's Greeting</div>
-                <div class="greeting-title">사랑하는 성도 여러분,<br>모라중앙교회에 오신 것을<br>환영합니다.</div>
-                <div class="greeting-divider"></div>
-                <div class="greeting-body">
-                    <p>사랑하는 성도님들과 이곳을 찾아주신 모든 분들에게 주님의 이름으로 평안을 전합니다.</p>
-                    <p>우리 교회는 "가르치고, 전파하며, 치유하는 교회"라는 사명을 품고 있습니다.<br>
-                        말씀을 통해 삶의 방향을 배우고, 복음을 세상 가운데 담대히 전하며,<br>
-                        상한 마음과 아픈 삶이 회복되는 은혜의 공동체가 바로 우리 교회이기를 소망합니다.</p>
-                    <p>오늘을 살아가는 우리의 삶 속에는 예기치 않는 아픔, 그리고 설명하기 어려운 무거움이 찾아옵니다.<br>
-                        하나님께서는 그런 우리를 말씀으로 가르치시고, 사랑으로 품으시며, 치유의 손길로 새롭게 하시는 분이십니다.<br>
-                        우리 교회가 그 하나님의 사랑과 은혜를 경험하는 통로가 되기를 기도합니다.</p>
-                    <p>이곳에 오신 모든 분들이 말씀 안에서 참된 진리를 깨닫고, 복음 안에서 기쁨을 누리며,<br>
-                        주님의 치유하심으로 온전한 회복을 경험하시기를 축복합니다.<br>
-                        또한 서로를 사랑으로 섬기며 함께 성장해 가는 아름다운 공동체가 되기를 원합니다.</p>
-                    <p>언제나 주님의 평안과 은혜가 여러분의 삶 가운데 함께하기를 기도합니다.</p>
-                    <p>감사합니다.</p>
-                    <p>담임목사 이성희</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-top">
-            <div class="footer-logo">
-                <div class="name">
-                    <img src="images/churchlogo.png" alt="로고">
-                    모라중앙교회
-                </div>
-                <p>
-                    주소: 부산시 사상구 백양대로902번길26<br>
-                    전화: 051-312-4729<br>
-                    주일예배: 오전 11:00 &nbsp;|&nbsp; 오후 3:00<br>
-                    수요예배: 저녁 7:30<br>
-                    금요철야: 저녁 9:00
-                </p>
-            </div>
-            <div class="footer-col">
-                <h4>교회 소개</h4>
-                <ul>
-                    <li><a href="pastor.html">담임목사 인사말</a></li>
-                    <li><a href="#">교회 연혁</a></li>
-                    <li><a href="#">섬기는 사람들</a></li>
-                    <li><a href="#">예배 안내</a></li>
-                    <li><a href="#">찾아오시는 길</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>바로가기</h4>
-                <ul>
-                    <li><a href="#">주일 설교</a></li>
-                    <li><a href="#">새가족 소개</a></li>
-                    <li><a href="#">교우 소식</a></li>
-                    <li><a href="#">선교지 소식</a></li>
-                    <li><a href="#">포토앨범</a></li>
-                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2025 모라중앙교회. All rights reserved.</span>
-            <span>Mora Central Church</span>
-        </div>
-    </div>
-</footer>
+    </section>
 
-<script>
-    function toggleMenu() { document.getElementById('mainNav').classList.toggle('open'); }
-</script>
+    <div id="site-footer"></div>
+
+    <script src="/js/components.js"></script>
 </body>
 </html>
