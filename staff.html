@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>섬기는 사람들 — 모라중앙교회</title>
+    <meta name="description" content="모라중앙교회 교역자 및 장로단 소개">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="모라중앙교회">
+    <meta property="og:title" content="섬기는 사람들 — 모라중앙교회">
+    <meta property="og:description" content="모라중앙교회 교역자 및 장로단 소개">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?w=1200&q=80">
+    <meta property="og:url" content="https://vibecoding-seven-phi.vercel.app/staff.html">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* ── Page Hero ── */
+        .page-hero { background: var(--primary); color: white; padding: 56px 0 44px; text-align: center; }
+        .breadcrumb { font-size: 0.78rem; color: rgba(255,255,255,0.6); letter-spacing: 1px; margin-bottom: 14px; }
+        .breadcrumb span { color: rgba(255,255,255,0.9); }
+        .page-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.5px; }
+        .page-hero-bar { width: 40px; height: 3px; background: rgba(255,255,255,0.5); margin: 16px auto 0; border-radius: 2px; }
+
+        /* ── Section ── */
+        .staff-section { padding: 60px 0; }
+        .staff-section + .staff-section { padding-top: 0; }
+
+        .section-title {
+            font-size: 1.25rem; font-weight: 700; color: var(--primary);
+            border-left: 4px solid var(--primary); padding-left: 14px;
+            margin-bottom: 28px;
+        }
+
+        /* ── Staff Card (교역자) ── */
+        .staff-group { margin-bottom: 48px; }
+        .staff-group:last-child { margin-bottom: 0; }
+
+        .staff-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .staff-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .staff-photo {
+            flex-shrink: 0;
+            width: 90px;
+            height: 110px;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .staff-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            display: block;
+        }
+
+        .staff-info { flex: 1; min-width: 0; }
+
+        .staff-name-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 7px 22px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .staff-detail {
+            font-size: 0.85rem;
+            color: #555;
+            line-height: 1.9;
+        }
+        .staff-detail strong { color: #333; }
+
+        /* ── Elder Grid (장로) ── */
+        .elder-group { margin-bottom: 48px; }
+        .elder-group:last-child { margin-bottom: 0; }
+
+        .elder-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .elder-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .elder-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            margin-bottom: 10px;
+        }
+        .elder-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top;
+            display: block;
+        }
+
+        .elder-name {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .elder-grid-small {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* ── Divider ── */
+        .staff-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 0 48px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .staff-row { grid-template-columns: 1fr; }
+            .elder-grid { grid-template-columns: repeat(3, 1fr); }
+            .elder-grid-small { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .elder-grid { grid-template-columns: repeat(2, 1fr); }
+            .elder-grid-small { grid-template-columns: repeat(2, 1fr); }
+            .staff-card { flex-direction: column; align-items: center; text-align: center; }
+            .staff-photo { width: 110px; height: 130px; }
+        }
+    </style>
+</head>
+<body data-page="staff">
+
+    <div id="site-header"></div>
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+        <div class="breadcrumb">교회 소개 &nbsp;›&nbsp; <span>섬기는 사람들</span></div>
+        <h1>섬기는 사람들</h1>
+        <div class="page-hero-bar"></div>
+    </div>
+
+    <!-- 교역자 -->
+    <section class="staff-section">
+        <div class="inner">
+
+            <!-- 담임목사 -->
+            <div class="staff-group">
+                <div class="section-title">담임목사</div>
+                <div class="staff-row" style="grid-template-columns: 1fr 1fr;">
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <img src="/images/pastorphoto.png" alt="이성희 담임목사">
+                        </div>
+                        <div class="staff-info">
+                            <div class="staff-name-badge">이성희 담임목사</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="staff-divider">
+
+            <!-- 부교역자 -->
+            <div class="staff-group">
+                <div class="section-title">부교역자</div>
+                <div class="staff-row">
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <img src="/images/권진덕 부목사.png" alt="권진덕 부목사">
+                        </div>
+                        <div class="staff-info">
+                            <div class="staff-name-badge">권진덕 부목사</div>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <img src="/images/백경희 전도사.jpg" alt="백경희 전도사">
+                        </div>
+                        <div class="staff-info">
+                            <div class="staff-name-badge">백경희 전도사</div>
+                        </div>
+                    </div>
+                    <div class="staff-card">
+                        <div class="staff-photo">
+                            <img src="/images/서감사 강도사.jpg" alt="서감사 강도사">
+                        </div>
+                        <div class="staff-info">
+                            <div class="staff-name-badge">서감사 강도사</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 장로 -->
+    <section class="staff-section" style="background: var(--surface); padding-top: 60px;">
+        <div class="inner">
+
+            <!-- 시무장로 -->
+            <div class="elder-group">
+                <div class="section-title">시무장로</div>
+                <div class="elder-grid">
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/001 김왕국 장로.jpg" alt="김왕국 장로"></div>
+                        <div class="elder-name">김왕국 장로</div>
+                    </div>
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/002 김일만 장로.jpg" alt="김일만 장로"></div>
+                        <div class="elder-name">김일만 장로</div>
+                    </div>
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/003 이형필 장로.jpg" alt="이형필 장로"></div>
+                        <div class="elder-name">이형필 장로</div>
+                    </div>
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/004 노중철 장로.jpg" alt="노중철 장로"></div>
+                        <div class="elder-name">노중철 장로</div>
+                    </div>
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/005 서정중 장로.jpg" alt="서정중 장로"></div>
+                        <div class="elder-name">서정중 장로</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="staff-divider">
+
+            <!-- 협동장로 -->
+            <div class="elder-group">
+                <div class="section-title">협동장로</div>
+                <div class="elder-grid elder-grid-small" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/006 노용도 협동장로.png" alt="노용도 협동장로"></div>
+                        <div class="elder-name">노용도 협동장로</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="staff-divider">
+
+            <!-- 원로장로 -->
+            <div class="elder-group">
+                <div class="section-title">원로장로</div>
+                <div class="elder-grid elder-grid-small" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/007 김진욱 원로장로.jpg" alt="김진욱 원로장로"></div>
+                        <div class="elder-name">김진욱 원로장로</div>
+                    </div>
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/008 김용해 원로장로.jpg" alt="김용해 원로장로"></div>
+                        <div class="elder-name">김용해 원로장로</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="staff-divider">
+
+            <!-- 은퇴장로 -->
+            <div class="elder-group">
+                <div class="section-title">은퇴장로</div>
+                <div class="elder-grid elder-grid-small" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/009 최돈만 은퇴장로.jpg" alt="최돈만 은퇴장로"></div>
+                        <div class="elder-name">최돈만 은퇴장로</div>
+                    </div>
+                    <div class="elder-card">
+                        <div class="elder-photo"><img src="/images/010 윤석철 은퇴장로.jpg" alt="윤석철 은퇴장로"></div>
+                        <div class="elder-name">윤석철 은퇴장로</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div id="site-footer"></div>
+
+    <script src="/js/components.js"></script>
+</body>
+</html>

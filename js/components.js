@@ -3,6 +3,7 @@
 
     var NAV_MAP = {
         'pastor':      { top: 'church-intro', sub: 'pastor' },
+        'staff':       { top: 'church-intro', sub: 'staff' },
         'history':     { top: 'church-intro' },
         'people':      { top: 'church-intro' },
         'worship':     { top: 'church-intro' },
