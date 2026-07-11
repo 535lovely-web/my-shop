@@ -94,9 +94,84 @@
             .quick-grid { grid-template-columns: repeat(2, 1fr); }
             .slide-ctas { flex-direction: column; align-items: center; }
         }
+
+        /* ── Popup ── */
+        .popup-overlay {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0, 0, 0, 0.55);
+            display: flex; align-items: center; justify-content: center;
+            padding: 20px;
+        }
+        .popup-overlay.hidden { display: none; }
+        .popup-box {
+            background: white; border-radius: 8px;
+            width: 100%; max-width: 420px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        .popup-header {
+            background: var(--primary); color: white;
+            padding: 18px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .popup-header h2 { font-size: 1rem; font-weight: 700; }
+        .popup-close {
+            background: none; border: none; color: white;
+            font-size: 1.4rem; cursor: pointer; line-height: 1;
+            padding: 0; opacity: 0.8; transition: opacity 0.2s;
+        }
+        .popup-close:hover { opacity: 1; }
+        .popup-body {
+            padding: 28px 24px 20px;
+            text-align: center;
+        }
+        .popup-body .popup-icon {
+            font-size: 2.4rem; color: var(--primary);
+            margin-bottom: 16px;
+        }
+        .popup-body p {
+            font-size: 0.95rem; color: #444; line-height: 1.9;
+        }
+        .popup-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #f0f0f0;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .popup-check-label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 0.82rem; color: #888; cursor: pointer;
+        }
+        .popup-check-label input { cursor: pointer; }
+        .popup-confirm-btn {
+            padding: 9px 22px; background: var(--primary); color: white;
+            border: none; border-radius: 4px; font-size: 0.85rem;
+            font-weight: 600; cursor: pointer; font-family: var(--font);
+            transition: background 0.2s;
+        }
+        .popup-confirm-btn:hover { background: #0f2a5a; }
     </style>
 </head>
 <body data-page="home">
+
+    <!-- 공지 팝업 -->
+    <div class="popup-overlay hidden" id="popup">
+        <div class="popup-box">
+            <div class="popup-header">
+                <h2>홈페이지 안내</h2>
+                <button class="popup-close" id="popupClose">&times;</button>
+            </div>
+            <div class="popup-body">
+                <div class="popup-icon"><i class="fa-solid fa-circle-info"></i></div>
+                <p>지금 모라중앙교회 홈페이지는 제작중입니다.<br>정식 오픈 상태가 아니므로 양해부탁드립니다.</p>
+            </div>
+            <div class="popup-footer">
+                <label class="popup-check-label">
+                    <input type="checkbox" id="popupHideToday"> 오늘 하루 보지 않기
+                </label>
+                <button class="popup-confirm-btn" id="popupConfirm">확인</button>
+            </div>
+        </div>
+    </div>
 
     <div id="site-header"></div>
 
@@ -260,6 +335,33 @@
         });
 
         setInterval(function () { changeSlide(1); }, 5000);
+
+        // 팝업
+        (function () {
+            var HIDE_KEY = 'popup_hide_until';
+            var popup = document.getElementById('popup');
+            var now = new Date().getTime();
+            var hideUntil = localStorage.getItem(HIDE_KEY);
+
+            if (!hideUntil || now > parseInt(hideUntil)) {
+                popup.classList.remove('hidden');
+            }
+
+            function closePopup() {
+                if (document.getElementById('popupHideToday').checked) {
+                    var tomorrow = new Date();
+                    tomorrow.setHours(23, 59, 59, 0);
+                    localStorage.setItem(HIDE_KEY, tomorrow.getTime());
+                }
+                popup.classList.add('hidden');
+            }
+
+            document.getElementById('popupClose').addEventListener('click', closePopup);
+            document.getElementById('popupConfirm').addEventListener('click', closePopup);
+            popup.addEventListener('click', function (e) {
+                if (e.target === popup) closePopup();
+            });
+        })();
     </script>
 </body>
 </html>
